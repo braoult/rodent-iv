@@ -16,8 +16,8 @@ BOOKSDIR      := books
 STYLESDIR     := personalities
 
 # install paths
-#BASEDIR := /usr/local
-BASEDIR       := /tmp/local
+BASEDIR := /usr/local
+# BASEDIR       := /tmp/local
 BINDIR        := $(BASEDIR)/bin
 DATADIR       := $(BASEDIR)/share/rodentIV
 
