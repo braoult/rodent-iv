@@ -1,41 +1,8 @@
 # Prerequisites
 *.d
 
-# Compiled Object files
-*.slo
-*.lo
+# Compiled Object files & binary
 *.o
-*.obj
+/rodentIV
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-*.ipch
-*.ipdb
-*.tlog
-*.pdb
-sources/.vs/rodent-iv/v15/.suo
-sources/.vs/rodent-iv/v15/Browse.VC.db
-sources/x64/Release/rodent-iv.iobj
 *.log
-sources/.vs/rodent-iv/v15/Browse.VC.opendb
