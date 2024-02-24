@@ -14,7 +14,7 @@ General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.
 If not, see <http://www.gnu.org/licenses/>.
-*/ 
+*/
 
 // REGEX to count all the lines under MSVC 13: ^(?([^\r\n])\s)*[^\s+?/]+[^\n]*$
 // 9289 lines
@@ -303,7 +303,7 @@ constexpr bool MoreThanOne(const U64& b) { return b & (b - 1); }
 
 // taunt functions
 
-enum eTaunt{TAUNT_CAPTURE, 
+enum eTaunt{TAUNT_CAPTURE,
     TAUNT_CRUSHING, TAUNT_WINNING, TAUNT_ADVANTAGE, TAUNT_SMALL_PLUS, TAUNT_BALANCE, TAUNT_SMALL_MINUS,
     TAUNT_GENERIC, TAUNT_DISADVANTAGE, TAUNT_LOSING};
 // TAUNT_INCHECK, TAUNT_CHECKMATE, TAUNT_BOOK
@@ -544,7 +544,7 @@ public:
     U64 twoPawnsTake[2];
     U64 pawnCanTake[2];
     U64 allAttacks[2];
-    
+
     void Init(POS * p);
     U64 GetNbrAttacks(int sd);
     U64 GetNbrqAttacks(int sd);
@@ -576,8 +576,8 @@ enum Values {
     B_PAIR_MG, B_PAIR_EG, N_PAIR, R_PAIR, ELEPH, A_EXC,                                 // material adjustments
     N_ATT1, N_ATT2, B_ATT1, B_ATT2, R_ATT1, R_ATT2, Q_ATT1, Q_ATT2,                     // attacks against enemy king zone
     N_CHK, B_CHK, R_CHK, Q_CHK, Q_CONTACT,                                              // check threats
-	N_OWH_MG, N_OWH_EG, B_OWH_MG, B_OWH_EG, 
-	N_REACH_MG, N_REACH_EG, B_REACH_MG, B_REACH_EG, 
+	N_OWH_MG, N_OWH_EG, B_OWH_MG, B_OWH_EG,
+	N_REACH_MG, N_REACH_EG, B_REACH_MG, B_REACH_EG,
 	N_SH_MG, N_SH_EG, B_SH_MG, B_SH_EG,
     N_CL, R_OP, N_TRAP, N_BLOCK, K_NO_LUFT_MG, K_NO_LUFT_EG, K_CASTLE_KS, K_CASTLE_QS,
     B_TRAP_A2, B_TRAP_A3, B_BLOCK, B_FIANCH, B_BADF, B_KING, B_BF_MG, B_BF_EG,          // bishop parameters
@@ -599,13 +599,13 @@ enum Values {
 };
 
 const char* const paramNames[N_OF_VAL] = {
-    "PawnValueMg", "PawnValueEg", "KnightValueMg", "KnightValueEg", "BishopValueMg", 
+    "PawnValueMg", "PawnValueEg", "KnightValueMg", "KnightValueEg", "BishopValueMg",
     "BishopValueEg", "RookValueMg", "RookValueEg", "QueenValueMg", "QueenValueEg",             // piece values
     "BishopPairMg", "BishopPairEg", "KnightPair", "RookPair", "ELEPH", "A_EXC",                // material adjustments
     "N_ATT1", "N_ATT2", "B_ATT1", "B_ATT2", "R_ATT1", "R_ATT2", "Q_ATT1", "Q_ATT2",            // attacks against enemy king zone
     "N_CHK", "B_CHK", "R_CHK", "Q_CHK", "Q_CONTACT",                                           // check threats
 	"N_OWH_MG", "N_OWH_EG", "B_OWH_MG", "B_OWH_EG",
-	"N_REACH_MG", "N_REACH_EG", "B_REACH_MG", "B_REACH_EG", 
+	"N_REACH_MG", "N_REACH_EG", "B_REACH_MG", "B_REACH_EG",
 	"N_SH_MG", "N_SH_EG", "B_SH_MG", "B_SH_EG",
     "N_CL", "R_OP", "N_TRAP", "N_BLOCK", "K_NO_LUFT_MG", "K_NO_LUFT_EG", "K_CASTLE_KS", "K_CASTLE_QS",
     "B_TRAP_A2", "B_TRAP_A3", "B_BLOCK", "B_FIANCH", "B_BADF", "B_KING", "B_BF_MG", "B_BF_EG",  // bishop parameters
@@ -751,9 +751,9 @@ class cMask {
 
     // mask showing bishop positions where pattern evaluation can be applied
 
-    static constexpr U64 wb_special = SqBb(A7) | SqBb(A6) | SqBb(B8) | SqBb(H7) | SqBb(H6) | SqBb(G8) 
+    static constexpr U64 wb_special = SqBb(A7) | SqBb(A6) | SqBb(B8) | SqBb(H7) | SqBb(H6) | SqBb(G8)
                                     | SqBb(C1) | SqBb(F1) | SqBb(G2) | SqBb(B2) | SqBb(A1) | SqBb(H1);
-    static constexpr U64 bb_special = SqBb(A2) | SqBb(A3) | SqBb(B1) | SqBb(H2) | SqBb(H3) | SqBb(G1) 
+    static constexpr U64 bb_special = SqBb(A2) | SqBb(A3) | SqBb(B1) | SqBb(H2) | SqBb(H3) | SqBb(G1)
                                     | SqBb(C8) | SqBb(F8) | SqBb(G7) | SqBb(B7) | SqBb(A8) | SqBb(H8);
 
     U64 adjacent[8];
@@ -922,12 +922,12 @@ class cEngine {
     static int ScaleKNPK(POS *p, eColor sd, eColor op);
     static int ScaleKRPKR(POS *p, eColor sd, eColor op);
     static int ScaleKQKRP(POS *p, eColor sd, eColor op);
-    
+
     static void EvaluateBishopPatterns(POS *p, eData *e);
     static void EvaluateKnightPatterns(POS *p, eData *e);
     static void EvaluateCentralPatterns(POS *p, eData *e);
     static void EvaluateKingPatterns(POS *p, eData *e);
-    static void EvalFianchetto(POS *p, eData *e, eColor side, eSquare bSq, eSquare pSq, eSquare sq, eSquare s2, 
+    static void EvalFianchetto(POS *p, eData *e, eColor side, eSquare bSq, eSquare pSq, eSquare sq, eSquare s2,
                                eSquare obl, eSquare b1, eSquare b2, eSquare b3, U64 kingMask);
     static void EvalBishopOnInitial(POS *p, eData *e, eColor side, eSquare bSq, eSquare pSq, eSquare blockSq, U64 king);
     static void EvaluateKingAttack(POS *p, eData *e, eColor sd);
@@ -1083,7 +1083,7 @@ extern const int ph_value[7];
     #else
         #define ChDirEnv(dummy) false
     #endif
-	
+
     bool ChDir(const char *new_path);
     // classify path
     constexpr bool isabsolute(const char *path) { return path[0] == '/'; }
