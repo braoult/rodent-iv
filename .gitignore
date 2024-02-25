@@ -2,7 +2,7 @@
 *.d
 
 # Compiled Object files & binary
-*.o
+/obj/
 /rodentIV
 
 *.log

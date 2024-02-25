@@ -9,14 +9,15 @@ CHMOD         := chmod
 
 # sources, and target
 SRCDIR        := ./src
+OBJDIR        := ./obj
 SRC           := $(wildcard $(SRCDIR)/*.cpp)
-OBJ           := $(SRC:.cpp=.o)
+OBJ           := $(addprefix $(OBJDIR)/,$(notdir $(SRC:.cpp=.o)))
 BIN           := ./rodentIV
 BOOKSDIR      := books
 STYLESDIR     := personalities
 
 # install paths
-BASEDIR := /usr/local
+BASEDIR       := /usr/local
 # BASEDIR       := /tmp/local
 BINDIR        := $(BASEDIR)/bin
 DATADIR       := $(BASEDIR)/share/rodentIV
@@ -30,14 +31,15 @@ CPPFLAGS      += -DPERSONALITIESPATH=$(DATADIR)/$(STYLESDIR)
 CFLAGS        := -std=gnu++14
 CFLAGS        += -O3
 CFLAGS        += -g
-CFLAGS        += -pipe
 CFLAGS        += -Wall
 CFLAGS        += -Wextra
 CFLAGS        += -march=native
 CFLAGS        += -Wmissing-declarations
 CFLAGS        += -Wno-unknown-pragmas			    # ignore "pragma warning"
 # from orig Makefile, unsure...
-#CFLAGS     += -fno-rtti -fprefetch-loop-arrays
+CFLAGS        += -fno-rtti
+CFLAGS        += -fprefetch-loop-arrays
+#CFLAGS        += -pipe
 
 # define the link options
 LDFLAGS       := -lm					    # unused ?
@@ -59,7 +61,11 @@ $(BIN): $(OBJ)
 release: LDFLAGS += -s
 release: clean $(BIN)
 
-.cpp.o:
+$(OBJDIR):
+	@echo creating $@ directory.
+	@$(MKDIR) $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	@echo "compiling $< -> $@."
 	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
@@ -70,7 +76,7 @@ clean:
 	@$(RM) -f $(BIN)
 cleanobj:
 	@echo cleaning obj...
-	@$(RM) -f $(OBJ)
+	@$(RM) -rf $(OBJDIR)
 cleanall: cleanobj clean
 
 install:
